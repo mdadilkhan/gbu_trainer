@@ -9,7 +9,7 @@ const Dialogbox = ({ isOpen, onClose, title, children }) => {
   // <div className="bg-white rounded-3xl shadow-lg w-fit h-fit p-6 sm:max-w-[90%] sm:h-auto sm:mx-auto overflow-scroll"></div>
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-3xl shadow-lg border border-red-600 w-[90%] h-[90%] sm:w-[70%] sm:h-[70%] overflow-scroll p-10">
+      <div className="bg-white rounded-3xl shadow-lg w-[90%] h-[90%] sm:w-[70%] sm:h-[70%] overflow-scroll p-10">
         <div className="flex justify-start items-center">
           <button
             onClick={onClose}

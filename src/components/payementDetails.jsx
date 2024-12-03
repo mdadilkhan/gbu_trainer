@@ -11,9 +11,13 @@ import toast from "react-hot-toast"; // Make sure to import toast for notificati
 
 const PaymentDetails = () => {
   const navigate = useNavigate();
-  const { currentPayementDetails } = useSelector((state) => state.paymentDetails);
+  const { currentPayementDetails } = useSelector(
+    (state) => state.paymentDetails
+  );
 
-  const [totalPrice, setTotalPrice] = useState(currentPayementDetails?.price || 0);
+  const [totalPrice, setTotalPrice] = useState(
+    currentPayementDetails?.price || 0
+  );
   const [copied, setCopied] = useState(false);
   const upiId = "sumeet1014@okhdfcbank";
 
@@ -24,7 +28,7 @@ const PaymentDetails = () => {
       let calculatedPrice = price * pack;
 
       if (pack === 5) {
-        calculatedPrice *= 0.90; // 10% discount
+        calculatedPrice *= 0.9; // 10% discount
       } else if (pack === 10) {
         calculatedPrice *= 0.85; // 15% discount
       }
@@ -84,13 +88,16 @@ const PaymentDetails = () => {
                 rel="noopener noreferrer"
               >
                 Privacy Policy
-              </a>.
+              </a>
+              .
             </p>
             <div className="flex gap-2 items-center">
               <p>Copy UPI ID: {upiId}</p>
               <Copy
                 size={24}
-                className={`cursor-pointer ${copied ? "text-green-500" : "text-black"}`}
+                className={`cursor-pointer ${
+                  copied ? "text-green-500" : "text-black"
+                }`}
                 onClick={handleCopyUpiId}
               />
               {copied && <span className="text-green-500">Copied!</span>}
@@ -104,7 +111,12 @@ const PaymentDetails = () => {
                 Back
               </button>
 
-              <RazorPay currentPayementDetails={{ ...currentPayementDetails, price: totalPrice }} />
+              <RazorPay
+                currentPayementDetails={{
+                  ...currentPayementDetails,
+                  price: totalPrice,
+                }}
+              />
             </div>
           </div>
 
@@ -115,14 +127,18 @@ const PaymentDetails = () => {
               </div>
               <div className="flex flex-col gap-2">
                 <p className="font-sans text-[20px] text-[#06030D]">
-                  Mastering the Essentials: Foundations of Counseling Skills
+                  3-Month Intensive Training Program
                 </p>
               </div>
             </div>
             <div className="flex flex-col gap-4">
               <div className="flex justify-between items-center w-full">
                 <p className="font-sans text-[20px] font-semibold w-[70%]">
-                  Individual
+                  {currentPayementDetails.pack === 1
+                    ? "Individual"
+                    : currentPayementDetails.pack === 5
+                    ? "Group of 5"
+                    : "Group of 10"}
                 </p>
                 <p className="w-[30%]">₹{totalPrice.toFixed(2)}</p>
               </div>

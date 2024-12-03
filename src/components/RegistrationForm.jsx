@@ -14,7 +14,7 @@ const RegistrationForm = () => {
   );
   const { price, student } = currentRegistrationDetails;
   const [members, setMembers] = useState(
-    Array(student.min).fill({name: "", email: "" })
+    Array(student.max).fill({name: "", email: "" })
   );
  
   const [formData, setFormData] = useState({
@@ -80,7 +80,7 @@ const RegistrationForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:3000/dev/saveUserDetails",formData).then((res)=>{
+    axios.post("https://bw0y6ywsq4.execute-api.ap-south-1.amazonaws.com/dev/saveUserDetails",formData).then((res)=>{
       console.log("res>>",res);
       
       if(res.status===200){
@@ -147,7 +147,7 @@ const RegistrationForm = () => {
               <p>Register Form</p>
             </div>
           </div>
-          <div className="flex justify-center sm:justify-end">
+          {/* <div className="flex justify-center sm:justify-end">
             <button
               className={`capitalize py-2.5 px-5 rounded-lg ${
                 members.length >= student.max ? "bg-disable" : "bg-[#614298]"
@@ -157,7 +157,7 @@ const RegistrationForm = () => {
             >
               Add Member
             </button>
-          </div>
+          </div> */}
           <form onSubmit={handleFormSubmit} className="flex flex-col gap-4 ">
             <div className="flex flex-col gap-4">
             {members.map((member, index) => (
@@ -197,7 +197,7 @@ const RegistrationForm = () => {
                     </div>
                     </div>
                    
-                    <div className="pt-6 text-2xl">
+                    {/* <div className="pt-6 text-2xl">
                       {members.length > student.min && (
                         <button
                           type="button"
@@ -207,7 +207,7 @@ const RegistrationForm = () => {
                           x
                         </button>
                       )}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}
